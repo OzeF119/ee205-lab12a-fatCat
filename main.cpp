@@ -17,7 +17,7 @@
 #include <cassert>
 
 int main() {
-    std::cout << "A fun fact about me is I like dogs" << std::endl;
+    std::cout << "Hello World" << std::endl;
     Weight animal1 = Weight();
     animal1.dump();
 }
