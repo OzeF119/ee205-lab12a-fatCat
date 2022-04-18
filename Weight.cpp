@@ -21,9 +21,9 @@ using namespace std;
 #define SLUGS_IN_A_POUND 0.031081 ;
 #define UNKNOWN_WEIGHT -1;
 
-//const string Weight::KILO_LABEL = "Kilo";
-//const string Weight::POUND_LABEL = "Pound";
-//const string Weight::SLUG_LABEL = "Slug";
+const string Weight::KILO_LABEL = "Kilo";
+const string Weight::POUND_LABEL = "Pound";
+const string Weight::SLUG_LABEL = "Slug";
 
 //#define FORMAT_LINE( className, member ) cout << setw(8) << (className) << setw(20) << (member) << setw(52);
 
@@ -141,7 +141,6 @@ void Weight::dump() const noexcept {
     cout << "Weight   maxWeight   " << maxWeight << endl;
 }
 
-/*
 bool Weight::operator==(const Weight &rhs_Weight) const {
     if (convertWeight(weight, unitOfWeight, KILO) == convertWeight(&rhs_Weight, unitOfWeight, KILO)){
         return true;
@@ -159,7 +158,7 @@ bool Weight::operator<(const Weight &rhs_Weight) const {
 Weight &Weight::operator+=(float rhs_addToWeight) {
     weight = weight + rhs_addToWeight;
 }
-*/
+
 float Weight::fromKilogramToPound(float kilogram) noexcept {
     return kilogram / KILOS_IN_A_POUND ;
 }

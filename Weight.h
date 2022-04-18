@@ -45,9 +45,9 @@ public:
     void setWeight(float newWeight, UnitOfWeight weightUnits);
     bool isWeightValid(float checkWeight) const noexcept;
     void dump() const noexcept;
-    //bool operator==(const Weight &rhs_Weight) const;
-    //bool operator<(const Weight &rhs_Weight) const;
-    //Weight& operator+=(float rhs_addToWeight);
+    bool operator==(const Weight &rhs_Weight) const;
+    bool operator<(const Weight &rhs_Weight) const;
+    Weight& operator+=(float rhs_addToWeight);
 public:
     static float fromKilogramToPound( float kilogram ) noexcept;
     static float fromPoundToKilogram(float pound) noexcept;
