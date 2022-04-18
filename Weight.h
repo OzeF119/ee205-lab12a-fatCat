@@ -15,13 +15,13 @@
 
 class Weight {
 protected:
+    enum UnitOfWeight { POUND, KILO, SLUG };
     bool blsKnown;
     bool bHasMax;
     enum UnitOfWeight unitOfWeight;
     float weight;
     float maxWeight;
 public:
-    enum UnitOfWeight { POUND, KILO, SLUG };
     static const float KILOS_IN_A_POUND ;
     static const float SLUGS_IN_A_POUND ;
     static const float UNKNOWN_WEIGHT  ;
@@ -36,7 +36,7 @@ public:
     Weight(float newWeight, float newMaxWeight);
     Weight(UnitOfWeight newUnitOfWeight, float newMaxWeight);
     Weight(float newWeight, UnitOfWeight newUnitOfWeight, float newMaxWeight);
-    bool isWeightKnown() const noexcept;
+public:
     bool hasMaxWeight() const noexcept;
     float getWeight() const noexcept;
     float getWeight(UnitOfWeight weightUnits) const noexcept;
@@ -45,7 +45,6 @@ public:
     void setWeight(float newWeight);
     void setWeight(float newWeight, UnitOfWeight weightUnits);
     bool isWeightValid(float checkWeight) const noexcept;
-    bool validate() const noexcept;
     void dump() const noexcept;
     bool operator==(const Weight &rhs_Weight) const;
     bool operator<(const Weight &rhs_Weight) const;
