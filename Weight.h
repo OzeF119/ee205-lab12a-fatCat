@@ -22,9 +22,6 @@ protected:
     float weight;
     float maxWeight;
 public:
-    static const float KILOS_IN_A_POUND ;
-    static const float SLUGS_IN_A_POUND ;
-    static const float UNKNOWN_WEIGHT  ;
     static const std::string POUND_LABEL ;
     static const std::string KILO_LABEL ;
     static const std::string SLUG_LABEL ;
@@ -37,7 +34,9 @@ public:
     Weight(UnitOfWeight newUnitOfWeight, float newMaxWeight);
     Weight(float newWeight, UnitOfWeight newUnitOfWeight, float newMaxWeight);
 public:
+    void Initialize();
     bool hasMaxWeight() const noexcept;
+    bool isWeightKnown() const noexcept;
     float getWeight() const noexcept;
     float getWeight(UnitOfWeight weightUnits) const noexcept;
     float getMaxWeight() const noexcept;
@@ -58,3 +57,38 @@ public:
 private:
     void setMaxWeight(float newMaxWeight);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

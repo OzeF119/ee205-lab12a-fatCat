@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ee205-lab12a-fatCat.iml" filepath="$PROJECT_DIR$/.idea/ee205-lab12a-fatCat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ee205_lab12a_fatCat.iml" filepath="$PROJECT_DIR$/.idea/ee205_lab12a_fatCat.iml" />
     </modules>
   </component>
 </project>
