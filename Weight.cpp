@@ -16,8 +16,9 @@
 #include <ostream>
 #include "Weight.h"
 
+using namespace std;
 #define KILOS_IN_A_POUND 0.453592 ;
-#define SlUGS_IN_A_POUND 0.031081 ;
+#define SLUGS_IN_A_POUND 0.031081 ;
 #define UNKNOWN_WEIGHT -1;
 
 //const string Weight::KILO_LABEL = "Kilo";
@@ -41,6 +42,7 @@ Weight::Weight() noexcept {
 Weight::Weight(float newWeight) {
     Initialize();
     weight = newWeight;
+    blsKnown = true;
 }
 
 Weight::Weight(Weight::UnitOfWeight newUnitOfWeight) noexcept {
@@ -50,11 +52,13 @@ Weight::Weight(Weight::UnitOfWeight newUnitOfWeight) noexcept {
 Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight) {
     Initialize();
     weight = newWeight;
+    blsKnown = true;
     unitOfWeight = newUnitOfWeight;
 }
 Weight::Weight(float newWeight, float newMaxWeight) {
     Initialize();
     weight = newWeight;
+    blsKnown = true;
     bHasMax = true;
     maxWeight = newMaxWeight;
 }
@@ -124,12 +128,20 @@ bool Weight::isWeightValid(float checkWeight) const noexcept {
         if(checkWeight <= maxWeight) {
             return true;
         }
-        else {
-            return false;
-        }
     }
+    return false;
 }
 
+void Weight::dump() const noexcept {
+    cout << "==============================================" << endl ;
+    cout << "Weight   isKnown   " << blsKnown << endl ;
+    cout << "Weight   weight    " << weight << endl ;
+    cout << "Weight   unitOfWeight   " << unitOfWeight << endl ;
+    cout << "Weight   hasMax   " << bHasMax << endl;
+    cout << "Weight   maxWeight   " << maxWeight << endl;
+}
+
+/*
 bool Weight::operator==(const Weight &rhs_Weight) const {
     if (convertWeight(weight, unitOfWeight, KILO) == convertWeight(&rhs_Weight, unitOfWeight, KILO)){
         return true;
@@ -138,12 +150,6 @@ bool Weight::operator==(const Weight &rhs_Weight) const {
 }
 
 bool Weight::operator<(const Weight &rhs_Weight) const {
-    if (weight == UNKNOWN_WEIGHT) {
-        weight = 0;
-    }
-    if (&rhs_Weight == UNKNOWN_WEIGHT) {
-        weight = 0;
-    }
     if (convertWeight(weight, unitOfWeight, KILO) < convertWeight(&rhs_Weight, unitOfWeight, KILO)){
         return true;
     }
@@ -153,7 +159,7 @@ bool Weight::operator<(const Weight &rhs_Weight) const {
 Weight &Weight::operator+=(float rhs_addToWeight) {
     weight = weight + rhs_addToWeight;
 }
-
+*/
 float Weight::fromKilogramToPound(float kilogram) noexcept {
     return kilogram / KILOS_IN_A_POUND ;
 }
@@ -180,7 +186,7 @@ float Weight::convertWeight(float fromWeight, Weight::UnitOfWeight fromUnit, Wei
             return fromPoundToSlug(fromWeight);
         }
         if (fromUnit == KILO) {
-            finalWeight = KilogramToPound(fromWeight);
+            finalWeight = fromKilogramToPound(fromWeight);
             return fromPoundToSlug(finalWeight);
         }
     }
@@ -207,6 +213,7 @@ float Weight::convertWeight(float fromWeight, Weight::UnitOfWeight fromUnit, Wei
             return fromKilogramToPound(fromWeight);
         }
     }
+    return fromWeight;
 }
 
 void Weight::setMaxWeight(float newMaxWeight) {
